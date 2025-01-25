@@ -1,35 +1,47 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public abstract class BaseSpawner : MonoBehaviour
 {
-    public float spawnInterval = 2f; // Інтервал між спавном
-    public Transform[] spawnPlanes; // Масив площин для спавну
+    public float spawnInterval = 2f;
+    [SerializeField]
+    protected List<ScreenSide> allowedSides = new List<ScreenSide> { ScreenSide.Left, ScreenSide.Right, ScreenSide.Top, ScreenSide.Bottom };
+    protected Camera mainCamera;
+
+    protected enum ScreenSide { Left, Right, Top, Bottom }
 
     protected virtual void Start()
     {
-        // Запускаємо спавн об'єктів з інтервалом
+        mainCamera = Camera.main;
         InvokeRepeating(nameof(SpawnObject), spawnInterval, spawnInterval);
     }
+    protected abstract void SpawnObject();
 
-    protected abstract void SpawnObject(); // Абстрактний метод для спавну об'єктів
-
-    protected Vector3 GetRandomPositionOnPlane(Transform plane)
+    protected Vector3 GetRandomPositionOnAllowedSides()
     {
-        // Отримуємо випадкову позицію в межах площини
-        Vector3 localPosition = new Vector3(
-            Random.Range(-0.5f, 0.5f), // Випадкове значення по X
-            Random.Range(-0.5f, 0.5f), // Випадкове значення по Y
-            0
-        );
+        float screenHalfWidth = mainCamera.orthographicSize * mainCamera.aspect;
+        float screenHalfHeight = mainCamera.orthographicSize;
 
-        // Перетворюємо локальну позицію у світову
-        return plane.TransformPoint(localPosition);
-    }
+        ScreenSide side = allowedSides[Random.Range(0, allowedSides.Count)];
 
-    protected Transform GetRandomSpawnPlane()
-    {
-        // Вибираємо випадкову площину з масиву
-        if (spawnPlanes.Length == 0) return null;
-        return spawnPlanes[Random.Range(0, spawnPlanes.Length)];
+        Vector3 spawnPosition = Vector3.zero;
+
+        switch (side)
+        {
+            case ScreenSide.Left:
+                spawnPosition = new Vector3(-screenHalfWidth, Random.Range(-screenHalfHeight, screenHalfHeight), 0);
+                break;
+            case ScreenSide.Right:
+                spawnPosition = new Vector3(screenHalfWidth, Random.Range(-screenHalfHeight, screenHalfHeight), 0);
+                break;
+            case ScreenSide.Top:
+                spawnPosition = new Vector3(Random.Range(-screenHalfWidth, screenHalfWidth), screenHalfHeight, 0);
+                break;
+            case ScreenSide.Bottom:
+                spawnPosition = new Vector3(Random.Range(-screenHalfWidth, screenHalfWidth), -screenHalfHeight, 0);
+                break;
+        }
+
+        return spawnPosition;
     }
 }

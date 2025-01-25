@@ -2,20 +2,18 @@ using UnityEngine;
 
 public class WoodSpawner : BaseSpawner
 {
-    public GameObject woodPrefab; 
-    public float woodSpeed = 5f;
+        public GameObject woodPrefab;
+        public float woodSpeed = 5f;
 
-    protected override void SpawnObject()
-    {
-        Transform spawnPlane = GetRandomSpawnPlane();
-        if (spawnPlane == null) return;
+        protected override void SpawnObject()
+        {
+            Vector3 spawnPosition = GetRandomPositionOnAllowedSides();
 
-        Vector3 spawnPosition = GetRandomPositionOnPlane(spawnPlane);
-        GameObject wood = Instantiate(woodPrefab, spawnPosition, Quaternion.identity);
+            GameObject wood = Instantiate(woodPrefab, spawnPosition, Quaternion.identity);
 
-        Vector2 direction = spawnPlane.position.x > 0 ? Vector2.left : Vector2.right;
+            Vector2 direction = (Vector2.zero - (Vector2)spawnPosition).normalized;
 
-        MoveObject moveScript = wood.AddComponent<MoveObject>();
-        moveScript.SetDirectionAndSpeed(direction, woodSpeed);
-    }
+            MoveObject moveScript = wood.AddComponent<MoveObject>();
+            moveScript.SetDirectionAndSpeed(direction, woodSpeed);
+        }
 }
