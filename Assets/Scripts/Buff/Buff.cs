@@ -14,14 +14,14 @@ public class Buff : MonoBehaviour
 {
     public enum BuffType
     {
-        Speed, 
-        Health  // Бонус до HP
+        Speed,
+        Health
     }
 
-    public BuffType buffType;      // Тип бафу
-    public bool isDebuff;          // Чи це дебаф
-    public float value;            // Значення бафу або дебафу
-    private float fallSpeed = 2f;  // Швидкість падіння
+    public BuffType buffType;
+    public bool isDebuff;
+    public float value;
+    private float fallSpeed = 2f;
 
     void Update()
     {
@@ -54,7 +54,7 @@ public class Buff : MonoBehaviour
             }
         }
 
-        Destroy(gameObject); // Видаляємо баф після застосування
+        Destroy(gameObject);
     }
 
     public void SetFallSpeed(float speed)

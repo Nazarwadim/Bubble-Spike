@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, IBuffable, IDebuffable
         get => _speedModifier;
         set
         {
-            _speedModifier = Mathf.Clamp(value, 0.75f, 2.0f);
+            _speedModifier = Mathf.Clamp(value, 0.75f, 1.25f);
         }
     }
 
@@ -51,9 +51,9 @@ public class Player : MonoBehaviour, IBuffable, IDebuffable
     {
         if (other.TryGetComponent(out Buff buff))
         {
-            buff.ApplyBuff(this); // Передаємо гравцю баф
+            buff.ApplyBuff(this);
         }
-          if (other.TryGetComponent(out IDamageable component))
+        if (other.TryGetComponent(out IDamageable component))
         {
             component.TakeDamage(100);
         }
@@ -61,21 +61,20 @@ public class Player : MonoBehaviour, IBuffable, IDebuffable
 
     public void AddSpeedBuff(float speedModifier)
     {
+        if (SpeedModifier < 1) SpeedModifier = 1;
         SpeedModifier += speedModifier;
-        _positionMover.Speed *= SpeedModifier; // Оновлюємо швидкість у PositionMover
-        Debug.Log($"Speed Buff applied! New speedModifier: {SpeedModifier}");
+        _positionMover.Speed *= SpeedModifier;
     }
 
     public void AddSpeedDebuff(float speedModifier)
     {
+        if (SpeedModifier > 1) SpeedModifier = 1;
         SpeedModifier -= speedModifier;
-        _positionMover.Speed *= SpeedModifier; // Оновлюємо швидкість у PositionMover
-        Debug.Log($"Speed Debuff applied! New speedModifier: {SpeedModifier}");
+        _positionMover.Speed *= SpeedModifier;
     }
 
-   public void AddHealthBuff(float healthBonus)
+    public void AddHealthBuff(float healthBonus)
     {
-       _mainBubble.health += (int)healthBonus;
-        Debug.Log($"Health Buff applied! New health: {  _mainBubble.health}");
+        _mainBubble.health += (int)healthBonus;
     }
 }
