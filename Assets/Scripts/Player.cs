@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
 #if UNITY_EDITOR
-        QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        QualitySettings.vSyncCount = 0;  // VSync must be disabled // TODO: Move to Game.cs Script.
         Application.targetFrameRate = 60;
 #endif
     }
@@ -27,16 +27,14 @@ public class Player : MonoBehaviour
 
     public void OnScreenInputClicked(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        
+
         Vector2 position = eventData.position;
         position = Camera.main.ScreenToWorldPoint(position);
         if (!_positionMover.IsMoving)
         {
-            Debug.Log("Is not moving");
             _positionMover.MoveToPosition(position);
             return;
         }
-        Debug.Log("Is moving");
         _positionsQueue.Enqueue(position);
     }
 
@@ -46,6 +44,13 @@ public class Player : MonoBehaviour
         {
             _positionMover.MoveToPosition(_positionsQueue.Dequeue());
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out IDamageable component))
+        {
+            component.TakeDamage(100);
+        }
     }
 }
