@@ -817,17 +817,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fec24343b882e84abdcb59f7f114442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawning: 0
+  Spawning: 1
   Camera: {fileID: 519420031}
-  _allowedSides: []
-  _spawnIntervalMin: 2
-  _spawnIntervalMax: 2
-  bubbleSimplePrefab: {fileID: 0}
-  bubbleArmoredPrefab: {fileID: 0}
-  bubbleHardPrefab: {fileID: 0}
-  ToObject: {fileID: 0}
+  _allowedSides:
+  - Offset: 1
+    Side: 0
+  - Offset: 1
+    Side: 1
+  _spawnIntervalMin: 0.1
+  _spawnIntervalMax: 0.4
+  bubbleSimplePrefab: {fileID: 1199189757849741677, guid: 416f87a0e8a75b35d9ccc79a2b0d395f, type: 3}
+  bubbleArmoredPrefab: {fileID: 1199189757849741677, guid: 98690326309a8f61a9d687140d6adf4d, type: 3}
+  bubbleHardPrefab: {fileID: 1199189757849741677, guid: b054e7fa15be48dea988a7f6a9e2e210, type: 3}
+  ToObject: {fileID: 1639678909}
+  BubbleParrent: {fileID: 1812814872}
   MinSpeed: 0.1
-  MaxSpeed: 1.5
+  MaxSpeed: 0.3
   SimpleProbability: 75
   ArmoredProbability: 15
   HardProbabiliky: 10
