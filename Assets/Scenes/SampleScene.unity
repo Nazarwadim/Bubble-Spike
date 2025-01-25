@@ -152,6 +152,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1615995381}
+  - {fileID: 1496847508}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -346,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18deb47bd62a15b3fbe76161ef564499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 49
+  _speed: 5
   _endPosition: {x: 0, y: 0}
 --- !u!114 &645576674
 MonoBehaviour:
@@ -361,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _positionMover: {fileID: 645576673}
+  _mainBubble: {fileID: 1639678913}
 --- !u!58 &645576675
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1063,6 +1065,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457253437}
   m_CullTransparentMesh: 1
+--- !u!1 &1496847507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1496847508}
+  - component: {fileID: 1496847509}
+  m_Layer: 0
+  m_Name: BuffSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1496847508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496847507}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 121830189}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496847509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496847507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f527a2e36d5ab4eaad273e618aa0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Spawning: 1
+  Camera: {fileID: 519420031}
+  _allowedSides:
+  - Offset: 1
+    Side: 2
+  _spawnIntervalMin: 1
+  _spawnIntervalMax: 1
+  buffPrefabs:
+  - {fileID: 4727344505012857363, guid: 5a708660d31193f4b899a493dd1f61ea, type: 3}
+  - {fileID: 4727344505012857363, guid: 60708307c8f6b7b4880eddcc6afb6668, type: 3}
+  - {fileID: 4727344505012857363, guid: f0657432cea57454daa5393eacc84102, type: 3}
+  - {fileID: 4727344505012857363, guid: d8ece73f6626f2a4c909251bc4f9c333, type: 3}
+  minFallSpeed: 1
+  maxFallSpeed: 5
 --- !u!1 &1539886057
 GameObject:
   m_ObjectHideFlags: 0
