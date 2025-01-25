@@ -25,7 +25,7 @@ public class PositionMover : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Vector3 endPosition = new Vector3(_endPosition.x, _endPosition.y, transform.position.z);
 
@@ -41,6 +41,6 @@ public class PositionMover : MonoBehaviour
     {
         _endPosition = position;
         IsMoving = true;
-        FixedUpdate();
+        Update();
     }
 }
