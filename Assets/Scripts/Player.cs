@@ -1,9 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IBuffable, IDebuffable
 {
     [SerializeField] private PositionMover _positionMover;
+    [SerializeField] private MainBubble _mainBubble;
+    private float _speedModifier = 1f;
+    public float SpeedModifier
+    {
+        get => _speedModifier;
+        set
+        {
+            _speedModifier = Mathf.Clamp(value, 0.75f, 1.25f);
+        }
+    }
 
     private readonly Queue<Vector3> _positionsQueue = new();
 
@@ -19,7 +29,6 @@ public class Player : MonoBehaviour
 
     public void OnScreenInputClicked(UnityEngine.EventSystems.PointerEventData eventData)
     {
-
         Vector2 position = eventData.position;
         position = Camera.main.ScreenToWorldPoint(position);
         if (!_positionMover.IsMoving)
@@ -40,9 +49,32 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.TryGetComponent(out Buff buff))
+        {
+            buff.ApplyBuff(this);
+        }
         if (other.TryGetComponent(out IDamageable component))
         {
             component.TakeDamage(100);
         }
+    }
+
+    public void AddSpeedBuff(float speedModifier)
+    {
+        if (SpeedModifier < 1) SpeedModifier = 1;
+        SpeedModifier += speedModifier;
+        _positionMover.Speed *= SpeedModifier;
+    }
+
+    public void AddSpeedDebuff(float speedModifier)
+    {
+        if (SpeedModifier > 1) SpeedModifier = 1;
+        SpeedModifier -= speedModifier;
+        _positionMover.Speed *= SpeedModifier;
+    }
+
+    public void AddHealthBuff(float healthBonus)
+    {
+        _mainBubble.health += (int)healthBonus;
     }
 }

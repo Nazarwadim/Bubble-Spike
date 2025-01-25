@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MainBubble : MonoBehaviour, IDamageable
 {
-    [SerializeField] int health;
+    [SerializeField] public int health;
     const int MaxDamage = 10000000;
 
     private bool _isDead = false;

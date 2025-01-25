@@ -64,11 +64,6 @@ public class Wood : MonoBehaviour, IDamageable, IKillable
 
         _particleDie = Instantiate(_particleSystemPrefab, _particleParrent.transform);
 
-        // Vector3 rotation = _particleDie.transform.rotation.eulerAngles;
-        // rotation.z = transform.rotation.eulerAngles.z;
-        // _particleDie.transform.rotation = Quaternion.Euler(rotation);
-        // _particleDie.transform.position = transform.position;
-
         float duration = _particleDie.main.duration;
         Destroy(gameObject, duration);
         Destroy(_particleParrent.gameObject, duration);

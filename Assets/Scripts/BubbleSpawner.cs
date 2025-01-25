@@ -8,6 +8,8 @@ public class BubbleSpawner : BaseSpawner
     public GameObject bubbleHardPrefab;
     public Transform ToObject;
 
+    public Transform BubbleParrent;
+
     public float MinSpeed = 0.1f;
     public float MaxSpeed = 1.5f;
 
@@ -34,6 +36,7 @@ public class BubbleSpawner : BaseSpawner
             bubblePref = bubbleHardPrefab;
         }
         GameObject bubble = Instantiate(bubblePref, spawnPosition, Quaternion.identity);
+        bubble.transform.SetParent(BubbleParrent);
         PositionMover positionMover = bubble.GetComponent<PositionMover>();
         positionMover.MoveToPosition(ToObject.position);
         positionMover.Speed = Random.Range(MinSpeed, MaxSpeed);
