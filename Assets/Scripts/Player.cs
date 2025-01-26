@@ -86,6 +86,6 @@ public class Player : MonoBehaviour, IBuffable, IDebuffable
 
     public void AddHealthBuff(float healthBonus)
     {
-        _mainBubble.health += (int)healthBonus;
+        _mainBubble.Health += (int)healthBonus;
     }
 }
