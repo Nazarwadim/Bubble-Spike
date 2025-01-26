@@ -3,7 +3,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class Wood : MonoBehaviour, IDamageable, IKillable
+public class Wood : MonoBehaviour, IDamageable, IKillable, IDeathSound
 {
     public const int ScoreToGive = 40;
 
@@ -15,12 +15,19 @@ public class Wood : MonoBehaviour, IDamageable, IKillable
     private GameObject _particleParrent;
     public Vector2 direction = Vector2.up;
     public float rotationSpeed = 50f;
+    private AudioSource _audioSource;
+    public AudioClip deathSound;
+
 
     public float Speed;
 
     private bool _destroyed = false;
 
     private Vector2 _gravityVelocity;
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
     private void Update()
     {
         Vector3 position = transform.position;
@@ -57,6 +64,9 @@ public class Wood : MonoBehaviour, IDamageable, IKillable
         }
 
         _destroyed = true;
+        PlayDeathSound();
+        StartCoroutine(DestroyAfterSound());
+
         Destroy(GetComponent<SpriteRenderer>());
         Destroy(GetComponent<Collider2D>());
 
@@ -66,16 +76,28 @@ public class Wood : MonoBehaviour, IDamageable, IKillable
         _particleParrent.transform.rotation = transform.rotation;
 
         _particleDie = Instantiate(_particleSystemPrefab, _particleParrent.transform);
+    }
 
+    private IEnumerator DestroyAfterSound()
+    {
+        yield return new WaitForSeconds(deathSound.length);
         float duration = _particleDie.main.duration;
         Destroy(gameObject, duration);
         Destroy(_particleParrent.gameObject, duration);
-
         ActionBus.BadBubbleDestroyed?.Invoke(ScoreToGive);
     }
 
     public int GetDamage()
     {
         return _damage;
+    }
+
+    public void PlayDeathSound()
+    {
+        if (_audioSource != null && deathSound != null)
+        {
+            _audioSource.time = 0f;
+            _audioSource.PlayOneShot(deathSound);
+        }
     }
 }
