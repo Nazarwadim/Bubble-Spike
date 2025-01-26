@@ -99,10 +99,11 @@ MonoBehaviour:
   - {fileID: 9100000, guid: ea889f37a5c449d1491ba4876fbba997, type: 2}
   - {fileID: 9100000, guid: 1f34fd4985b2e16b588660ee5b08674f, type: 2}
   - {fileID: 9100000, guid: 117c5bc13a4c2f991a11d7e380832d0d, type: 2}
-  _level: 150
+  _level: 110
   _parrent: {fileID: 1015878732436120981}
   Mover: {fileID: 8342438686017842171}
   deathSound: {fileID: 8300000, guid: e2736abd795c36243bea7ad6feba339e, type: 3}
+  armorDestroySound: {fileID: 8300000, guid: 6d8089344f4517972ac13bc527846175, type: 3}
 --- !u!212 &7459428197528141522
 SpriteRenderer:
   m_ObjectHideFlags: 0

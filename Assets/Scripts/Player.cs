@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IBuffable, IDebuffable
 {
     [SerializeField] private PositionMover _positionMover;
-    [SerializeField] private MainBubble _mainBubble;    
+    [SerializeField] private MainBubble _mainBubble;
 
     [SerializeField] private ScoreProgress _speedProgress;
 
@@ -20,8 +19,8 @@ public class Player : MonoBehaviour, IBuffable, IDebuffable
     }
 
     private readonly Queue<Vector3> _positionsQueue = new();
-    
-    private void Start() 
+
+    private void Start()
     {
         _speedProgress.Change((int)_positionMover.Speed);
     }

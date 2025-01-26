@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BadBubble : MonoBehaviour, IDamageable, IKillable, IDeathSound
 {
-    public enum Level { Simple = 10, Armored = 150, Hard = 210 }
+    public enum Level { Simple = 10, Armored = 110, Hard = 210 }
     [SerializeField] private List<RuntimeAnimatorController> _animatorControllers = new() { };
     [SerializeField] private Level _level;
     [SerializeField] private Transform _parrent;
     private AudioSource _audioSource;
     public PositionMover Mover;
     public AudioClip deathSound;
-
+    public AudioClip armorDestroySound;
 
     private int health;
     private int _damage;
@@ -52,11 +52,17 @@ public class BadBubble : MonoBehaviour, IDamageable, IKillable, IDeathSound
         {
             _destroyed = true;
             ActionBus.BadBubbleDestroyed?.Invoke((int)_level / 10);
+            _audioSource.volume = 1f;
             PlayDeathSound();
             StartCoroutine(DestroyAfterSound());
         }
         else
         {
+            _audioSource.volume = 0.35f;
+            if (armorDestroySound)
+            {
+                _audioSource.PlayOneShot(armorDestroySound);
+            }
             StartCoroutine(TakedDamage());
         }
     }
