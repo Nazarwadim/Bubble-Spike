@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18deb47bd62a15b3fbe76161ef564499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 9.8
+  _speed: 6
   _endPosition: {x: 0, y: 0}
 --- !u!114 &645576674
 MonoBehaviour:
@@ -2062,7 +2062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269163979cf80e13f9ca790a540a3e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fillImage: {fileID: 1463405410}
+  _fillImage: {fileID: 980520425}
   _max: 200
   _score: {fileID: 1639678914}
 --- !u!114 &1948926811

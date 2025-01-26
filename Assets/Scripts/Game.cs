@@ -80,7 +80,7 @@ public class Game : MonoBehaviour
     {
         DisableSpawning();
         StartPlaying();
-        StartCoroutine(SetThirdWawe());
+        StartCoroutine(SetTrainingWawe());
     }
 
     private void DisableSpawning()
