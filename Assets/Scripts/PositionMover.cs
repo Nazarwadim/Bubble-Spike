@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PositionMover : MonoBehaviour
 {
-    public const float MaxSpeed = 1000f;
+    public const float MaxSpeed = 64f;
     public const float MinSpeed = 0f;
 
     [SerializeField, Range(MinSpeed, MaxSpeed)] private float _speed;
