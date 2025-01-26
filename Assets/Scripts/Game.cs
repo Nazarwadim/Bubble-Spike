@@ -9,6 +9,8 @@ public class Game : MonoBehaviour
     [SerializeField] private BuffSpawner _buffSpawner;
     [SerializeField] private BubbleSpawner _badBubbleSpawner;
 
+    [SerializeField] private Score _score;
+
     private int _woodsToSpawnLeft = 0;
     private int _buffToSpawnLeft = 0;
     private int _bubblesToSpawnLeft = 0;
@@ -19,6 +21,9 @@ public class Game : MonoBehaviour
         _woodSpawner.ObjectSpawned += WoodSpawned;
         _badBubbleSpawner.ObjectSpawned += BubbleSpawned;
         _buffSpawner.ObjectSpawned += BuffSpawned;
+
+        ActionBus.BadBubbleDestroyed += AddScore;
+        ActionBus.WoodDestroyed += AddScore;
     }
 
     private void OnDisable()
@@ -27,6 +32,14 @@ public class Game : MonoBehaviour
         _woodSpawner.ObjectSpawned -= WoodSpawned;
         _badBubbleSpawner.ObjectSpawned -= BubbleSpawned;
         _buffSpawner.ObjectSpawned -= BuffSpawned;
+
+        ActionBus.BadBubbleDestroyed -= AddScore;
+        ActionBus.WoodDestroyed -= AddScore;
+    }
+
+    private void AddScore(int amount)
+    {
+        _score.AddScore(amount);
     }
 
     private void StartPlaying()
@@ -67,7 +80,7 @@ public class Game : MonoBehaviour
     {
         DisableSpawning();
         StartPlaying();
-        StartCoroutine(SetTrainingWawe());
+        StartCoroutine(SetThirdWawe());
     }
 
     private void DisableSpawning()

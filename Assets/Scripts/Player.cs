@@ -1,10 +1,14 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IBuffable, IDebuffable
 {
     [SerializeField] private PositionMover _positionMover;
-    [SerializeField] private MainBubble _mainBubble;
+    [SerializeField] private MainBubble _mainBubble;    
+
+    [SerializeField] private ScoreProgress _speedProgress;
+
     private float _speedModifier = 1f;
     public float SpeedModifier
     {
@@ -16,6 +20,11 @@ public class Player : MonoBehaviour, IBuffable, IDebuffable
     }
 
     private readonly Queue<Vector3> _positionsQueue = new();
+    
+    private void Start() 
+    {
+        _speedProgress.Change((int)_positionMover.Speed);
+    }
 
     private void OnEnable()
     {
@@ -64,6 +73,7 @@ public class Player : MonoBehaviour, IBuffable, IDebuffable
         if (SpeedModifier < 1) SpeedModifier = 1;
         SpeedModifier += speedModifier;
         _positionMover.Speed *= SpeedModifier;
+        _speedProgress.Change((int)_positionMover.Speed);
     }
 
     public void AddSpeedDebuff(float speedModifier)
@@ -71,6 +81,7 @@ public class Player : MonoBehaviour, IBuffable, IDebuffable
         if (SpeedModifier > 1) SpeedModifier = 1;
         SpeedModifier -= speedModifier;
         _positionMover.Speed *= SpeedModifier;
+        _speedProgress.Change((int)_positionMover.Speed);
     }
 
     public void AddHealthBuff(float healthBonus)

@@ -3,12 +3,21 @@ using UnityEngine;
 public class MainBubble : MonoBehaviour, IDamageable
 {
     [SerializeField] public int health;
+    [SerializeField] private ScoreProgress _healthProgress;
+
     const int MaxDamage = 10000000;
 
     private bool _isDead = false;
+
+    private void Start() 
+    {
+        _healthProgress.Change(health);
+    }
+
     public void TakeDamage(int amount)
     {
         health -= amount;
+        _healthProgress.Change(health);
         if (health <= 0)
         {
             Destroy(gameObject);
