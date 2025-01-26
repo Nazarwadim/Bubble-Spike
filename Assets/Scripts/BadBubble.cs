@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
-public class BadBubble : MonoBehaviour, IDamageable, IKillable
+public class BadBubble : MonoBehaviour, IDamageable, IKillable, IDeathSound
 {
     public enum Level { Simple = 10, Armored = 150, Hard = 210 }
     [SerializeField] private List<AnimatorController> _animatorControllers = new() { };
     [SerializeField] private Level _level;
     [SerializeField] private Transform _parrent;
+    private AudioSource _audioSource;
     public PositionMover Mover;
+    public AudioClip deathSound;
+
 
     private int health;
     private int _damage;
+    bool _destroyed = false;
 
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -38,25 +42,30 @@ public class BadBubble : MonoBehaviour, IDamageable, IKillable
                 _animator.runtimeAnimatorController = _animatorControllers[2];
                 break;
         }
-
+        _audioSource = GetComponent<AudioSource>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int amount)
     {
         health -= amount;
-        if (health <= 0)
+        if (health <= 0 && !_destroyed)
         {
-            // TODO:Play dead Sound;
-
+            _destroyed = true;
             ActionBus.BadBubbleDestroyed?.Invoke((int)_level / 10);
-            Destroy(_parrent.gameObject);
+            PlayDeathSound();
+            StartCoroutine(DestroyAfterSound());
         }
         else
         {
             StartCoroutine(TakedDamage());
         }
+    }
 
+    private IEnumerator DestroyAfterSound()
+    {
+        yield return new WaitForSeconds(deathSound.length);
+        Destroy(_parrent.gameObject);
     }
 
     public int GetDamage()
@@ -100,4 +109,12 @@ public class BadBubble : MonoBehaviour, IDamageable, IKillable
             return Level.Hard;
         }
     }
+    public void PlayDeathSound()
+    {
+        if (_audioSource != null && deathSound != null)
+        {
+            _audioSource.PlayOneShot(deathSound);
+        }
+    }
+
 }
