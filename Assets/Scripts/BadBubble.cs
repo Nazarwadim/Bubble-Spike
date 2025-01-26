@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class BadBubble : MonoBehaviour, IDamageable, IKillable, IDeathSound
 {
     public enum Level { Simple = 10, Armored = 150, Hard = 210 }
-    [SerializeField] private List<AnimatorController> _animatorControllers = new() { };
+    [SerializeField] private List<RuntimeAnimatorController> _animatorControllers = new() { };
     [SerializeField] private Level _level;
     [SerializeField] private Transform _parrent;
     private AudioSource _audioSource;

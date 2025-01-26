@@ -29,7 +29,7 @@ public class PositionMover : MonoBehaviour
     {
         Vector3 endPosition = new Vector3(_endPosition.x, _endPosition.y, transform.position.z);
 
-        transform.position = Vector3.MoveTowards(transform.position, endPosition, Speed * Time.fixedDeltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, endPosition, Speed * Time.deltaTime);
         if (transform.position == endPosition && IsMoving)
         {
             IsMoving = false;
