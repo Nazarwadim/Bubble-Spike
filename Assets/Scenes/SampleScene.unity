@@ -476,6 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18deb47bd62a15b3fbe76161ef564499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxSpeed: 24
   _speed: 6
   _endPosition: {x: 0, y: 0}
 --- !u!114 &645576674
@@ -610,9 +611,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 825095698}
   - {fileID: 843068589}
   - {fileID: 591196024}
+  - {fileID: 825095698}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1132,7 +1133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1206,6 +1207,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
       propertyPath: _healthProgress
       value: 
       objectReference: {fileID: 671802999}
@@ -1272,7 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fillImage: {fileID: 1543062160}
-  _max: 32
+  _max: 24
   _score: {fileID: 645576678}
 --- !u!114 &1101812083
 MonoBehaviour:
@@ -1570,7 +1575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -79.5, y: 1.5999985}
+  m_AnchoredPosition: {x: -79.5, y: -0.9000015}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1463405410
@@ -1667,6 +1672,7 @@ MonoBehaviour:
   - {fileID: 4727344505012857363, guid: 60708307c8f6b7b4880eddcc6afb6668, type: 3}
   - {fileID: 4727344505012857363, guid: f0657432cea57454daa5393eacc84102, type: 3}
   - {fileID: 4727344505012857363, guid: d8ece73f6626f2a4c909251bc4f9c333, type: 3}
+  - {fileID: 4727344505012857363, guid: 03627131ae9979dfe82c6acaec341ce5, type: 3}
   minFallSpeed: 1
   maxFallSpeed: 5
 --- !u!1 &1539886057
@@ -1769,7 +1775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1845,7 +1851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1981,7 +1987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

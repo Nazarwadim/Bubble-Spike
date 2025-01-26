@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class PositionMover : MonoBehaviour
 {
-    public const float MaxSpeed = 64f;
     public const float MinSpeed = 0f;
 
-    [SerializeField, Range(MinSpeed, MaxSpeed)] private float _speed;
+    [SerializeField] private float _maxSpeed = 64;
+    [SerializeField] private float _speed;
     [SerializeField] private Vector2 _endPosition;
 
     public bool IsMoving { get; private set; }
@@ -21,7 +21,7 @@ public class PositionMover : MonoBehaviour
         }
         set
         {
-            _speed = Mathf.Clamp(value, MinSpeed, MaxSpeed);
+            _speed = Mathf.Clamp(value, MinSpeed, _maxSpeed);
         }
     }
 

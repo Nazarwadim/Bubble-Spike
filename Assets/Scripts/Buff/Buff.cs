@@ -38,7 +38,6 @@ public class Buff : MonoBehaviour, IDeathSound
 
         if (IsOutOfBounds() && !soundPlayed)
         {
-            GetComponent<SpriteRenderer>().enabled = false;
             Destroy(gameObject);
             soundPlayed = true;
         }
@@ -85,6 +84,7 @@ public class Buff : MonoBehaviour, IDeathSound
         {
             PlayDeathSound();
             GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(GetComponent<Collider2D>());
             StartCoroutine(DestroyAfterSound());
             soundPlayed = true;
         }

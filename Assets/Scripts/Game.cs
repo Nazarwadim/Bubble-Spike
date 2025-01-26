@@ -86,7 +86,7 @@ public class Game : MonoBehaviour
         audioSource.volume = MusicVolume.Volume;
         DisableSpawning();
         StartPlaying();
-        StartCoroutine(SetFirstWawe());
+        StartCoroutine(SetTrainingWawe());
     }
 
     private void DisableSpawning()
@@ -153,7 +153,7 @@ public class Game : MonoBehaviour
             yield break;
         }
 
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(5f);
 
         _buffSpawner.Spawning = true;
         _buffToSpawnLeft = 5;
@@ -178,7 +178,7 @@ public class Game : MonoBehaviour
             yield break;
         }
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(8f);
 
         StartCoroutine(SetFirstWawe());
     }
@@ -188,8 +188,9 @@ public class Game : MonoBehaviour
         _badBubbleSpawner.Spawning = true;
         _badBubbleSpawner.SimpleProbability = 95;
         _woodSpawner.Spawning = true;
+        _buffSpawner.Spawning = true;
 
-        _bubblesToSpawnLeft = Random.Range(100, 300);
+        _bubblesToSpawnLeft = Random.Range(100, 250);
         _woodsToSpawnLeft = 10;
 
         _woodSpawner.MinArrowTime = 2;
@@ -198,11 +199,17 @@ public class Game : MonoBehaviour
         float spawnInterwalMinBeforeBub = _badBubbleSpawner.SpawnIntervalMin;
         float spawnInterwalMaxBeforeBub = _badBubbleSpawner.SpawnIntervalMax;
 
+        float spawnInterwalMinBeforeBuff = _buffSpawner.SpawnIntervalMin;
+        float spawnInterwalMaxBeforeBuff = _buffSpawner.SpawnIntervalMax;
+
         float spawnInterwalMinBeforeWood = _woodSpawner.SpawnIntervalMin;
         float spawnInterwalMaxBeforeWood = _woodSpawner.SpawnIntervalMax;
 
         _badBubbleSpawner.SpawnIntervalMin = 0.05f;
         _badBubbleSpawner.SpawnIntervalMax = 0.1f;
+
+        _buffSpawner.SpawnIntervalMin = 5f;
+        _buffSpawner.SpawnIntervalMax = 15f;
 
         _badBubbleSpawner.MinSpeed = 0.05f;
         _badBubbleSpawner.MaxSpeed = 0.2f;
@@ -223,6 +230,9 @@ public class Game : MonoBehaviour
 
         _badBubbleSpawner.SpawnIntervalMin = spawnInterwalMinBeforeBub;
         _badBubbleSpawner.SpawnIntervalMax = spawnInterwalMaxBeforeBub;
+
+        _buffSpawner.SpawnIntervalMin = spawnInterwalMinBeforeBuff;
+        _buffSpawner.SpawnIntervalMax = spawnInterwalMaxBeforeBuff;
 
         _badBubbleSpawner.SimpleProbability = 75;
 
@@ -270,7 +280,7 @@ public class Game : MonoBehaviour
         _badBubbleSpawner.SpawnIntervalMin = spawnInterwalMinBeforeBub;
         _badBubbleSpawner.SpawnIntervalMax = spawnInterwalMaxBeforeBub;
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(9f);
 
         if (!IsPlaying)
         {

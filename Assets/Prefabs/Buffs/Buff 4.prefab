@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7270190430958430279}
   - component: {fileID: -2162334050900824886}
   m_Layer: 0
-  m_Name: Buff 1
+  m_Name: Buff 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 341736181, guid: 7bbe89b2000842148bab2b995ede474c, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.92156863}
+  m_Color: {r: 0.5019608, g: 1, b: 0, a: 0.92156863}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,9 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathSound: {fileID: 8300000, guid: 08ef78ec6ee430341a4d0f222ce19813, type: 3}
-  buffType: 1
+  buffType: 0
   isDebuff: 1
-  value: 10
+  value: 0.12
 --- !u!58 &7270190430958430279
 CircleCollider2D:
   m_ObjectHideFlags: 0

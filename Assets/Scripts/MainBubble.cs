@@ -78,7 +78,6 @@ public class MainBubble : MonoBehaviour, IDamageable
         animator.SetTrigger("GoIdle");
     }
 
-    private int _timesMoved = 0;
     private float _prevDirection;
     private IEnumerator MoveRandomly()
     {
@@ -88,16 +87,7 @@ public class MainBubble : MonoBehaviour, IDamageable
 
         if (_prevDirection == direction)
         {
-            _timesMoved++;
-            if (_timesMoved > MaxMoveIntoDirection)
-            {
-                _timesMoved = 0;
-                direction = -direction;
-            }
-        }
-        else
-        {
-            _timesMoved = 0;
+            direction = Random.value > 0.5f ? 1f : -1f;
         }
         _prevDirection = direction;
         Vector3 startPosition = transform.position;
