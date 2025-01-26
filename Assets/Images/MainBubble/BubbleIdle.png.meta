@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7bbe89b2000842148bab2b995ede474c
+guid: 75a830c51a566204295c8724f10e90f5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,8 +44,8 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
-  spriteMeshType: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buff_0
+      name: BubbleIdle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 14
-        height: 25
+        width: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0e11d320a5ae7745bf6c61aff586f2b
-      internalID: 341736181
+      spriteID: 45f38ced9c1e6964bb8b388fb51d331e
+      internalID: -523577167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buff_1
+      name: BubbleIdle_1
       rect:
         serializedVersion: 2
-        x: 14
+        x: 64
         y: 0
-        width: 14
-        height: 25
+        width: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d5920dea8e17f842ac89573522ccfa3
-      internalID: -1609296321
+      spriteID: 4bf0474abcaeda24ab7c0ef8e89a19db
+      internalID: 370323019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buff_2
+      name: BubbleIdle_2
       rect:
         serializedVersion: 2
-        x: 28
+        x: 128
         y: 0
-        width: 14
-        height: 25
+        width: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a2706822d1c52a4db271a1a73e306d9
-      internalID: -2096352186
+      spriteID: 0944a335d742f664a8305f7302b94ffb
+      internalID: 1003292103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buff_3
+      name: BubbleIdle_3
       rect:
         serializedVersion: 2
-        x: 42
+        x: 192
         y: 0
-        width: 14
-        height: 25
+        width: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2f2e0985664757478803586dc3ffad8
-      internalID: 222503457
+      spriteID: 3d6d086a551b30a48aa0e9c8c0cc7290
+      internalID: 1456672806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buff_4
+      name: BubbleIdle_4
       rect:
         serializedVersion: 2
-        x: 56
+        x: 256
         y: 0
-        width: 14
-        height: 25
+        width: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eff770ef7f759644cb8b256995e7705c
-      internalID: 1368385460
+      spriteID: 5dfbe26a2a247ab4fa81c376f59da9b3
+      internalID: -1735391161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buff_5
+      name: BubbleIdle_5
       rect:
         serializedVersion: 2
-        x: 70
+        x: 320
         y: 0
-        width: 14
-        height: 25
+        width: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c79ce6f17b2e4064db29192ef2467fbd
-      internalID: 1211557813
+      spriteID: 03f17789a57be2c4f9a39bc91a6587e8
+      internalID: -137315144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buff_6
+      name: BubbleIdle_6
       rect:
         serializedVersion: 2
-        x: 84
+        x: 384
         y: 0
-        width: 14
-        height: 25
+        width: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b46190a966169f249b3a5b322a1bf9d2
-      internalID: 865420446
+      spriteID: 05f49d5bfdebfe448a210c6588e6c6dd
+      internalID: -2067391577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buff_7
+      name: BubbleIdle_7
       rect:
         serializedVersion: 2
-        x: 98
+        x: 448
         y: 0
-        width: 14
-        height: 25
+        width: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,50 +258,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f078b069b8ee4c543bb669e1bf6bb5f2
-      internalID: -1655401564
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buff_8
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 0
-        width: 14
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b0456f9dc3660f04496ba164fbde1e84
-      internalID: -570050920
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buff_9
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 0
-        width: 14
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6334365b056ed1640b61443590487f87
-      internalID: 94049383
+      spriteID: b8a2790f967bf4d4a88738d5feaa67ea
+      internalID: 486038331
       vertices: []
       indices: 
       edges: []
@@ -317,16 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      buff_0: 341736181
-      buff_1: -1609296321
-      buff_2: -2096352186
-      buff_3: 222503457
-      buff_4: 1368385460
-      buff_5: 1211557813
-      buff_6: 865420446
-      buff_7: -1655401564
-      buff_8: -570050920
-      buff_9: 94049383
+      BubbleIdle_0: -523577167
+      BubbleIdle_1: 370323019
+      BubbleIdle_2: 1003292103
+      BubbleIdle_3: 1456672806
+      BubbleIdle_4: -1735391161
+      BubbleIdle_5: -137315144
+      BubbleIdle_6: -2067391577
+      BubbleIdle_7: 486038331
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
