@@ -16,6 +16,7 @@ public class BadBubble : MonoBehaviour, IDamageable, IKillable, IDeathSound
 
     private int health;
     private int _damage;
+    bool _destroyed = false;
 
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -48,10 +49,10 @@ public class BadBubble : MonoBehaviour, IDamageable, IKillable, IDeathSound
     public void TakeDamage(int amount)
     {
         health -= amount;
-        if (health <= 0)
+        if (health <= 0 && !_destroyed)
         {
+            _destroyed = true;
             ActionBus.BadBubbleDestroyed?.Invoke((int)_level / 10);
-            Destroy(_parrent.gameObject);
             PlayDeathSound();
             StartCoroutine(DestroyAfterSound());
         }
