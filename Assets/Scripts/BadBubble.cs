@@ -48,6 +48,8 @@ public class BadBubble : MonoBehaviour, IDamageable, IKillable
         if (health <= 0)
         {
             // TODO:Play dead Sound;
+
+            ActionBus.BadBubbleDestroyed?.Invoke((int)_level / 10);
             Destroy(_parrent.gameObject);
         }
         else

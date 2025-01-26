@@ -25,9 +25,11 @@ public abstract class BaseSpawner : MonoBehaviour
     public bool Spawning;
     public Camera Camera;
 
+    public event System.Action ObjectSpawned;
+
     [SerializeField] private List<ScreenSide> _allowedSides = new();
-    [SerializeField] private float _spawnIntervalMin = 2f;
-    [SerializeField] private float _spawnIntervalMax = 2f;
+    public float SpawnIntervalMin = 2f;
+    public float SpawnIntervalMax = 2f;
 
     private float _timeToSpawnLeft = 0;
 
@@ -42,7 +44,8 @@ public abstract class BaseSpawner : MonoBehaviour
         if (_timeToSpawnLeft < 0f)
         {
             SpawnObject(GetRandomPositionOnAllowedSides());
-            _timeToSpawnLeft = Random.Range(_spawnIntervalMin, _spawnIntervalMax);
+            ObjectSpawned?.Invoke();
+            _timeToSpawnLeft = Random.Range(SpawnIntervalMin, SpawnIntervalMax);
         }
     }
 

@@ -1,9 +1,12 @@
 using System.Collections;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Wood : MonoBehaviour, IDamageable, IKillable
 {
+    public const int ScoreToGive = 40;
+
     [SerializeField] private ParticleSystem _particleSystemPrefab;
     [SerializeField] private int _damage;
     [SerializeField] private Vector2 _gravity;
@@ -68,6 +71,7 @@ public class Wood : MonoBehaviour, IDamageable, IKillable
         Destroy(gameObject, duration);
         Destroy(_particleParrent.gameObject, duration);
 
+        ActionBus.BadBubbleDestroyed?.Invoke(ScoreToGive);
     }
 
     public int GetDamage()
