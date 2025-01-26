@@ -8,6 +8,7 @@ public class Game : MonoBehaviour
     [SerializeField] private WoodSpawner _woodSpawner;
     [SerializeField] private BuffSpawner _buffSpawner;
     [SerializeField] private BubbleSpawner _badBubbleSpawner;
+    [SerializeField] private Animator _transition;
 
     [SerializeField] private Score _score;
 
@@ -51,6 +52,8 @@ public class Game : MonoBehaviour
     {
         IsPlaying = false;
         DisableSpawning();
+
+        _transition.SetTrigger("Died");
     }
 
     private void BubbleSpawned()
