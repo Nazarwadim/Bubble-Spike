@@ -42,7 +42,7 @@ public class Buff : MonoBehaviour, IDeathSound
             soundPlayed = true;
         }
     }
-     private IEnumerator DestroyAfterSound()
+    private IEnumerator DestroyAfterSound()
     {
         yield return new WaitForSeconds(deathSound.length);
         Destroy(gameObject);

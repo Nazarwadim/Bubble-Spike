@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     private Animator transition;
     public LevelLoader levelLoader; 
     public AudioSource audioSource;    
+    public Slider slider;
 
     void Start()
     {
+        audioSource.volume = MusicVolume.Volume;
+        slider.value = MusicVolume.Volume;
         transition = levelLoader.GetTransition();
     }
 

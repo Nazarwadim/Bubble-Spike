@@ -1595,6 +1595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelLoader: {fileID: 1326086545}
   audioSource: {fileID: 1088940506}
+  slider: {fileID: 1132093363}
 --- !u!1 &759925702
 GameObject:
   m_ObjectHideFlags: 0

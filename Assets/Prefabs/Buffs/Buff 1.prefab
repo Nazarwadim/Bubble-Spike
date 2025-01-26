@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSound: {fileID: 8300000, guid: 08ef78ec6ee430341a4d0f222ce19813, type: 3}
   buffType: 1
-  isDebuff: 1
+  isDebuff: 0
   value: 10
 --- !u!58 &7270190430958430279
 CircleCollider2D:
