@@ -12,6 +12,8 @@ public class Game : MonoBehaviour
 
     [SerializeField] private Score _score;
 
+    public AudioSource audioSource;
+
     private int _woodsToSpawnLeft = 0;
     private int _buffToSpawnLeft = 0;
     private int _bubblesToSpawnLeft = 0;
@@ -81,6 +83,7 @@ public class Game : MonoBehaviour
 
     private void Start()
     {
+        audioSource.volume = MusicVolume.Volume;
         DisableSpawning();
         StartPlaying();
         StartCoroutine(SetTrainingWawe());

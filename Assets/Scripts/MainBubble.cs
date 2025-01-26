@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class MainBubble : MonoBehaviour, IDamageable
 {
+    const int MaxMoveIntoDirection = 3;
+
     [SerializeField] private ScoreProgress _healthProgress;
     private int _health = 100;
     [SerializeField] private float moveDistance = 1.5f;
@@ -76,12 +78,28 @@ public class MainBubble : MonoBehaviour, IDamageable
         animator.SetTrigger("GoIdle");
     }
 
+    private int _timesMoved = 0;
+    private float _prevDirection;
     private IEnumerator MoveRandomly()
     {
         _isMoving = true;
 
         float direction = Random.value > 0.5f ? 1f : -1f;
 
+        if (_prevDirection == direction)
+        {
+            _timesMoved++;
+            if (_timesMoved > MaxMoveIntoDirection)
+            {
+                _timesMoved = 0;
+                direction = -direction;
+            }
+        }
+        else
+        {
+            _timesMoved = 0;
+        }
+        _prevDirection = direction;
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = startPosition + new Vector3(moveDistance * direction, 0, 0);
 
