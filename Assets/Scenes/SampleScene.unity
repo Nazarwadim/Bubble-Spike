@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 24
-  _speed: 12
+  _speed: 6
   _endPosition: {x: 0, y: 0}
 --- !u!114 &645576674
 MonoBehaviour:
