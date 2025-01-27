@@ -287,7 +287,7 @@ public class Game : MonoBehaviour
             yield break;
         }
         float randW = Random.Range(0, 10);
-        if (randW < 5)
+        if (randW < 6)
         {
             StartCoroutine(SetThirdWawe());
         }
@@ -326,11 +326,11 @@ public class Game : MonoBehaviour
         {
             StartCoroutine(SetFirstWawe());
         }
-        else if (randW < 30)
+        else if (randW < 25)
         {
             StartCoroutine(SetSecondWawe());
         }
-        else if (randW < 80)
+        else if (randW < 85)
         {
             yield return new WaitForSeconds(Random.Range(5, 6));
             StartCoroutine(SetForthWawe());

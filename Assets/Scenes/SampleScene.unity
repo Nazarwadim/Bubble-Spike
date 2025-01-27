@@ -1212,7 +1212,7 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
       propertyPath: idleTime
-      value: 0.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
       propertyPath: _centerPosition
