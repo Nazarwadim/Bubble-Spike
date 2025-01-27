@@ -8,13 +8,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - MainBubble
+  - Wood
+  - Buff
+  - BadBubble
   - 
   - 
   - 

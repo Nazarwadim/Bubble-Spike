@@ -52,15 +52,18 @@ public class BadBubble : MonoBehaviour, IDamageable, IKillable, IDeathSound
         {
             _destroyed = true;
             ActionBus.BadBubbleDestroyed?.Invoke((int)_level / 10);
-            _audioSource.volume = 1f;
-            PlayDeathSound();
-            StartCoroutine(DestroyAfterSound());
+            if (!_audioSource.isPlaying)
+            {
+                _audioSource.volume = 1f;
+                PlayDeathSound();
+                StartCoroutine(DestroyAfterSound());
+            }
         }
         else
         {
-            _audioSource.volume = 0.35f;
             if (armorDestroySound)
             {
+                _audioSource.volume = 0.2f;
                 _audioSource.PlayOneShot(armorDestroySound);
             }
             StartCoroutine(TakedDamage());
@@ -69,7 +72,11 @@ public class BadBubble : MonoBehaviour, IDamageable, IKillable, IDeathSound
 
     private IEnumerator DestroyAfterSound()
     {
-        yield return new WaitForSeconds(deathSound.length);
+        if (deathSound)
+        {
+            yield return new WaitForSeconds(deathSound.length);
+        }
+
         Destroy(_parrent.gameObject);
     }
 
@@ -78,13 +85,19 @@ public class BadBubble : MonoBehaviour, IDamageable, IKillable, IDeathSound
         return _damage;
     }
 
+    private bool _isTakingDamage = false;
     private IEnumerator TakedDamage()
     {
+        if (_isTakingDamage)
+        {
+            yield break;
+        }
+        _isTakingDamage = true;
         Color before = _spriteRenderer.color;
         _spriteRenderer.color = new Color(1, 0, 0, 1);
         yield return new WaitForSeconds(0.3f);
         _spriteRenderer.color = before;
-
+        _isTakingDamage = false;
         switch (GetLevel())
         {
             case Level.Simple:

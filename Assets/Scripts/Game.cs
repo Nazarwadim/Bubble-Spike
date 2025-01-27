@@ -48,6 +48,7 @@ public class Game : MonoBehaviour
     private void StartPlaying()
     {
         IsPlaying = true;
+        StartCoroutine(SetTrainingWawe());
     }
 
     private void StopPlaying()
@@ -86,7 +87,6 @@ public class Game : MonoBehaviour
         audioSource.volume = MusicVolume.Volume;
         DisableSpawning();
         StartPlaying();
-        StartCoroutine(SetTrainingWawe());
     }
 
     private void DisableSpawning()
@@ -190,7 +190,7 @@ public class Game : MonoBehaviour
         _woodSpawner.Spawning = true;
         _buffSpawner.Spawning = true;
 
-        _bubblesToSpawnLeft = Random.Range(100, 250);
+        _bubblesToSpawnLeft = Random.Range(120, 200);
         _woodsToSpawnLeft = 10;
 
         _woodSpawner.MinArrowTime = 2;
@@ -206,7 +206,7 @@ public class Game : MonoBehaviour
         float spawnInterwalMaxBeforeWood = _woodSpawner.SpawnIntervalMax;
 
         _badBubbleSpawner.SpawnIntervalMin = 0.05f;
-        _badBubbleSpawner.SpawnIntervalMax = 0.1f;
+        _badBubbleSpawner.SpawnIntervalMax = 0.12f;
 
         _buffSpawner.SpawnIntervalMin = 5f;
         _buffSpawner.SpawnIntervalMax = 15f;
@@ -252,8 +252,8 @@ public class Game : MonoBehaviour
         _woodSpawner.MinArrowTime = 1f;
         _woodSpawner.MaxArrowTime = 1.5f;
 
-        _bubblesToSpawnLeft = Random.Range(10, 40);
-        _woodsToSpawnLeft = Random.Range(10, 20);
+        _bubblesToSpawnLeft = Random.Range(10, 20);
+        _woodsToSpawnLeft = Random.Range(8, 15);
 
         float spawnInterwalMinBeforeBub = _badBubbleSpawner.SpawnIntervalMin;
         float spawnInterwalMaxBeforeBub = _badBubbleSpawner.SpawnIntervalMax;
@@ -280,7 +280,7 @@ public class Game : MonoBehaviour
         _badBubbleSpawner.SpawnIntervalMin = spawnInterwalMinBeforeBub;
         _badBubbleSpawner.SpawnIntervalMax = spawnInterwalMaxBeforeBub;
 
-        yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(10f);
 
         if (!IsPlaying)
         {
@@ -307,13 +307,13 @@ public class Game : MonoBehaviour
 
         EnableAllSpawning();
 
-        _badBubbleSpawner.SpawnIntervalMin = 0;
+        _badBubbleSpawner.SpawnIntervalMin = 0.1f;
         _badBubbleSpawner.SpawnIntervalMax = 0.5f;
 
-        yield return new WaitForSeconds(Random.Range(20, 100));
+        yield return new WaitForSeconds(Random.Range(20, 60));
         DisableSpawning();
 
-        yield return new WaitForSeconds(Random.Range(5, 10));
+        yield return new WaitForSeconds(Random.Range(7, 10));
 
         float randW = Random.Range(0, 100);
 
@@ -326,13 +326,101 @@ public class Game : MonoBehaviour
         {
             StartCoroutine(SetFirstWawe());
         }
-        else if (randW < 80)
+        else if (randW < 30)
         {
             StartCoroutine(SetSecondWawe());
+        }
+        else if (randW < 80)
+        {
+            yield return new WaitForSeconds(Random.Range(5, 6));
+            StartCoroutine(SetForthWawe());
         }
         else
         {
             StartCoroutine(SetThirdWawe());
+        }
+    }
+
+    private IEnumerator SetForthWawe()
+    {
+        _woodSpawner.Spawning = true;
+
+        _woodSpawner.MinArrowTime = 2f;
+        _woodSpawner.MaxArrowTime = 2f;
+
+        float spawnInterwalMinBeforeWood = _woodSpawner.SpawnIntervalMin;
+        float spawnInterwalMaxBeforeWood = _woodSpawner.SpawnIntervalMax;
+
+        float spawnInterwalMinBeforeBuff = _buffSpawner.SpawnIntervalMin;
+        float spawnInterwalMaxBeforeBuff = _buffSpawner.SpawnIntervalMax;
+
+        _badBubbleSpawner.SpawnIntervalMin = 0;
+
+        _woodSpawner.SpawnIntervalMin = 0f;
+        if (_score.Count < 10000)
+        {
+            _woodSpawner.SpawnIntervalMax = 2f;
+            _badBubbleSpawner.MaxSpeed = 0.8f;
+            _badBubbleSpawner.SpawnIntervalMax = 0.3f;
+        }
+        else
+        {
+            _woodSpawner.SpawnIntervalMax = 1.3f;
+            _badBubbleSpawner.MaxSpeed = 1.2f;
+            _badBubbleSpawner.SpawnIntervalMax = 0.2f;
+        }
+
+        _buffSpawner.SpawnIntervalMin = 2f;
+        _buffSpawner.SpawnIntervalMax = 7f;
+
+        _badBubbleSpawner.MinSpeed = 0.2f;
+        _badBubbleSpawner.MaxSpeed = 1.1f;
+
+        yield return new WaitForSeconds(Random.Range(10, 16));
+
+        if (IsPlaying)
+        {
+            EnableAllSpawning();
+        }
+
+
+        _woodSpawner.SpawnIntervalMin = 1f;
+        _woodSpawner.SpawnIntervalMax = 3f;
+
+        _woodSpawner.MinArrowTime = 1f;
+        _woodSpawner.MaxArrowTime = 1.5f;
+
+        yield return new WaitForSeconds(Random.Range(25, 50));
+        DisableSpawning();
+
+        _badBubbleSpawner.MinSpeed = 0.1f;
+        _badBubbleSpawner.MaxSpeed = 0.5f;
+
+        _badBubbleSpawner.SpawnIntervalMin = 0;
+        _badBubbleSpawner.SpawnIntervalMax = 0.5f;
+
+        _woodSpawner.SpawnIntervalMin = spawnInterwalMinBeforeWood;
+        _woodSpawner.SpawnIntervalMax = spawnInterwalMaxBeforeWood;
+
+        _buffSpawner.SpawnIntervalMin = spawnInterwalMinBeforeBuff;
+        _buffSpawner.SpawnIntervalMax = spawnInterwalMaxBeforeBuff;
+
+        if (!IsPlaying)
+        {
+            yield break;
+        }
+
+        yield return new WaitForSeconds(Random.Range(7, 10));
+
+        float randW = Random.Range(0, 100);
+
+        if (randW < 20)
+        {
+            StartCoroutine(SetFirstWawe());
+        }
+        else
+        {
+            StartCoroutine(SetSecondWawe());
         }
     }
 }

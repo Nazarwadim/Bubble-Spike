@@ -5,8 +5,11 @@ public class MainBubble : MonoBehaviour, IDamageable
 {
     const int MaxMoveIntoDirection = 3;
 
+    [SerializeField] private Transform _centerPosition;
     [SerializeField] private ScoreProgress _healthProgress;
-    private int _health = 100;
+    [SerializeField] private Color _takeDamageColor;
+    [SerializeField] private int _health = 100;
+    [SerializeField] private int _maxHealth = 200;
     [SerializeField] private float moveDistance = 1.5f;
     [SerializeField] private float moveDuration = 0.8f;
     [SerializeField] private float idleTime = 5f;
@@ -18,7 +21,7 @@ public class MainBubble : MonoBehaviour, IDamageable
         get => _health;
         set
         {
-            _health = Mathf.Clamp(value, 0, 10000000);
+            _health = Mathf.Clamp(value, 0, _maxHealth);
             _healthProgress.Change(_health);
         }
     }
@@ -48,8 +51,11 @@ public class MainBubble : MonoBehaviour, IDamageable
         {
             Destroy(gameObject);
             ActionBus.MainBubbleKilled?.Invoke();
-            print("Died");
             _isDead = true;
+        }
+        else
+        {
+            StartCoroutine(TakedDamage());
         }
     }
 
@@ -78,18 +84,23 @@ public class MainBubble : MonoBehaviour, IDamageable
         animator.SetTrigger("GoIdle");
     }
 
-    private float _prevDirection;
     private IEnumerator MoveRandomly()
     {
         _isMoving = true;
 
-        float direction = Random.value > 0.5f ? 1f : -1f;
+        float distanceFromCenterIfGoRight = Mathf.Abs(transform.position.x - _centerPosition.position.x + 1f);
+        float distanceFromCenterIfGoLeft = Mathf.Abs(transform.position.x - _centerPosition.position.x - 1f);
 
-        if (_prevDirection == direction)
+        float direction;
+        if (distanceFromCenterIfGoRight < distanceFromCenterIfGoLeft)
         {
-            direction = Random.value > 0.5f ? 1f : -1f;
+            direction = Random.value > 0.4f ? 1f : -1f;
         }
-        _prevDirection = direction;
+        else
+        {
+            direction = Random.value > 0.6f ? 1f : -1f;
+        }
+
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = startPosition + new Vector3(moveDistance * direction, 0, 0);
 
@@ -111,5 +122,21 @@ public class MainBubble : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(idleTime);
 
         _isMoving = false;
+    }
+
+    private bool _isTakingDamage = false;
+    private IEnumerator TakedDamage()
+    {
+        if (_isTakingDamage)
+        {
+            yield break;
+        }
+        _isTakingDamage = true;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        Color before = spriteRenderer.color;
+        spriteRenderer.color = _takeDamageColor;
+        yield return new WaitForSeconds(0.3f);
+        spriteRenderer.color = before;
+        _isTakingDamage = false;
     }
 }

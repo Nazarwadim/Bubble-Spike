@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 645576675}
   - component: {fileID: 645576677}
   - component: {fileID: 645576678}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 24
-  _speed: 6
+  _speed: 12
   _endPosition: {x: 0, y: 0}
 --- !u!114 &645576674
 MonoBehaviour:
@@ -1211,12 +1211,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
+      propertyPath: idleTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
+      propertyPath: _centerPosition
+      value: 
+      objectReference: {fileID: 1617420521}
+    - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
       propertyPath: _healthProgress
       value: 
       objectReference: {fileID: 671802999}
+    - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
+      propertyPath: _takeDamageColor.a
+      value: 0.4509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
+      propertyPath: _takeDamageColor.b
+      value: 0.11764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
+      propertyPath: _takeDamageColor.g
+      value: 0.078431375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222459018299438236, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
+      propertyPath: _takeDamageColor.r
+      value: 0.078431375
+      objectReference: {fileID: 0}
     - target: {fileID: 3550878457940649055, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
       propertyPath: m_Name
       value: MainBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550878457940649055, guid: 9e93c4220cdf2404d9008c7e13441317, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1936,6 +1964,37 @@ MonoBehaviour:
   MinArrowTime: 0.5
   MaxArrowTime: 1.2
   ToObject: {fileID: 671802992}
+--- !u!1 &1617420520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1617420521}
+  m_Layer: 0
+  m_Name: KeepingCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1617420521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617420520}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.48, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1812814872}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1731919436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,6 +2101,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 671802992}
+  - {fileID: 1617420521}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1834087542

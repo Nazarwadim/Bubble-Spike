@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18deb47bd62a15b3fbe76161ef564499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxSpeed: 64
   _speed: 2
   _endPosition: {x: 0, y: 0}
 --- !u!1 &5182496561522227614
@@ -61,7 +62,7 @@ GameObject:
   - component: {fileID: 6047023596059170568}
   - component: {fileID: 6313563362971756977}
   - component: {fileID: 599549182929946403}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BadBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,9 +102,9 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 117c5bc13a4c2f991a11d7e380832d0d, type: 2}
   _level: 10
   _parrent: {fileID: 1015878732436120981}
-  _audioSource: {fileID: 599549182929946403}
   Mover: {fileID: 8342438686017842171}
   deathSound: {fileID: 8300000, guid: e2736abd795c36243bea7ad6feba339e, type: 3}
+  armorDestroySound: {fileID: 0}
 --- !u!212 &7459428197528141522
 SpriteRenderer:
   m_ObjectHideFlags: 0

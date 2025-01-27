@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6551142537533598227}
   - component: {fileID: 7270190430958430279}
   - component: {fileID: -2162334050900824886}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Buff 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 341736181, guid: 7bbe89b2000842148bab2b995ede474c, type: 3}
-  m_Color: {r: 0.5019608, g: 1, b: 0, a: 0.92156863}
+  m_Color: {r: 0, g: 1, b: 0, a: 0.92156863}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
