@@ -56,8 +56,8 @@ public class BadBubble : MonoBehaviour, IDamageable, IKillable, IDeathSound
             {
                 _audioSource.volume = 1f;
                 PlayDeathSound();
-                StartCoroutine(DestroyAfterSound());
             }
+            StartCoroutine(DestroyAfterSound());
         }
         else
         {
