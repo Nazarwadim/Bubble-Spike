@@ -3,6 +3,17 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    private enum StartWave
+    {
+        Training,
+        First,
+        Second,
+        Third,
+        Fourth
+    }
+
+    [SerializeField] private StartWave _startWave = StartWave.Training;
+
     public bool IsPlaying { get; private set; }
 
     [SerializeField] private WoodSpawner _woodSpawner;
@@ -48,7 +59,30 @@ public class Game : MonoBehaviour
     private void StartPlaying()
     {
         IsPlaying = true;
-        StartCoroutine(SetTrainingWawe());
+
+        switch (_startWave)
+        {
+            case StartWave.Training:
+                StartCoroutine(SetTrainingWawe());
+                break;
+            case StartWave.First:
+                StartCoroutine(SetFirstWawe());
+                break;
+            case StartWave.Second:
+                StartCoroutine(SetSecondWawe());
+                break;
+            case StartWave.Third:
+                StartCoroutine(SetThirdWawe());
+                break;
+            case StartWave.Fourth:
+                StartCoroutine(SetFourthWawe());
+                break;
+            default:
+                StartCoroutine(SetTrainingWawe());
+                break;
+        }
+
+
     }
 
     private void StopPlaying()
@@ -333,7 +367,7 @@ public class Game : MonoBehaviour
         else if (randW < 85)
         {
             yield return new WaitForSeconds(Random.Range(5, 6));
-            StartCoroutine(SetForthWawe());
+            StartCoroutine(SetFourthWawe());
         }
         else
         {
@@ -341,7 +375,7 @@ public class Game : MonoBehaviour
         }
     }
 
-    private IEnumerator SetForthWawe()
+    private IEnumerator SetFourthWawe()
     {
         _woodSpawner.Spawning = true;
 
