@@ -318,8 +318,8 @@ public class Game : MonoBehaviour
         float spawnInterwalMinBeforeBub = _badBubbleSpawner.SpawnIntervalMin;
         float spawnInterwalMaxBeforeBub = _badBubbleSpawner.SpawnIntervalMax;
 
-        float spawnInterwalMinBeforeBuff = _badBubbleSpawner.SpawnIntervalMin;
-        float spawnInterwalMaxBeforeBuff = _badBubbleSpawner.SpawnIntervalMax;
+        float spawnInterwalMinBeforeBuff = _buffSpawner.SpawnIntervalMin;
+        float spawnInterwalMaxBeforeBuff = _buffSpawner.SpawnIntervalMax;
 
         float spawnInterwalMinBeforeWood = _woodSpawner.SpawnIntervalMin;
         float spawnInterwalMaxBeforeWood = _woodSpawner.SpawnIntervalMax;
