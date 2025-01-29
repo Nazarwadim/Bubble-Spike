@@ -328,10 +328,10 @@ public class Game : MonoBehaviour
         _badBubbleSpawner.SpawnIntervalMax = 1f;
 
 
-        if (_score.Count < 10000)
+        if (_score.Count < 5000)
         {
             _buffSpawner.SpawnIntervalMin = Random.Range(0.2f, 0.45f);
-            _buffSpawner.SpawnIntervalMax = 0.7f;
+            _buffSpawner.SpawnIntervalMax = 0.8f;
         }
         else
         {
