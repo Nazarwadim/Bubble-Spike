@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -106,6 +107,17 @@ public class Game : MonoBehaviour
     private void WoodSpawned()
     {
         _woodsToSpawnLeft--;
+    }
+
+    private void SetAllBufsSameProbability()
+    {
+        int count = _buffSpawner.Buffs.Length;
+        int probability = 100 / count;
+
+        for (int i = 0; i < count; i++)
+        {
+            _buffSpawner.Buffs[i].SpawnProbability = probability;
+        }
     }
 
     private void Awake()
@@ -283,22 +295,53 @@ public class Game : MonoBehaviour
 
         EnableAllSpawning();
 
-        _woodSpawner.MinArrowTime = 1f;
-        _woodSpawner.MaxArrowTime = 1.5f;
+        _woodSpawner.MinArrowTime = 1.8f;
+        _woodSpawner.MaxArrowTime = 2.6f;
 
         _bubblesToSpawnLeft = Random.Range(10, 20);
-        _woodsToSpawnLeft = Random.Range(8, 15);
+        _woodsToSpawnLeft = Random.Range(6, 12);
+        int count = _buffSpawner.Buffs.Count(b => b.BuffName.StartsWith("Slow"));
+        int speedCount = _buffSpawner.Buffs.Count(b => b.BuffName.StartsWith("Speed"));
+        int probability = 95 / count;
+        for (int i = 0; i < _buffSpawner.Buffs.Length; i++)
+        {
+            if (_buffSpawner.Buffs[i].BuffName.StartsWith("Slow"))
+            {
+                _buffSpawner.Buffs[i].SpawnProbability = probability;
+            }
+            else if (_buffSpawner.Buffs[i].BuffName.StartsWith("Speed"))
+            {
+                _buffSpawner.Buffs[i].SpawnProbability = 5 / speedCount;
+            }
+        }
 
         float spawnInterwalMinBeforeBub = _badBubbleSpawner.SpawnIntervalMin;
         float spawnInterwalMaxBeforeBub = _badBubbleSpawner.SpawnIntervalMax;
+
+        float spawnInterwalMinBeforeBuff = _badBubbleSpawner.SpawnIntervalMin;
+        float spawnInterwalMaxBeforeBuff = _badBubbleSpawner.SpawnIntervalMax;
 
         float spawnInterwalMinBeforeWood = _woodSpawner.SpawnIntervalMin;
         float spawnInterwalMaxBeforeWood = _woodSpawner.SpawnIntervalMax;
 
         _badBubbleSpawner.SpawnIntervalMin = 0.5f;
         _badBubbleSpawner.SpawnIntervalMax = 1f;
-        _woodSpawner.SpawnIntervalMin = 2f;
-        _woodSpawner.SpawnIntervalMax = 3f;
+
+
+        if (_score.Count < 10000)
+        {
+            _buffSpawner.SpawnIntervalMin = Random.Range(0.2f, 0.45f);
+            _buffSpawner.SpawnIntervalMax = 0.7f;
+        }
+        else
+        {
+            _buffSpawner.SpawnIntervalMin = 0.1f;
+            _buffSpawner.SpawnIntervalMax = 0.5f;
+        }
+
+
+        _woodSpawner.SpawnIntervalMin = 4f;
+        _woodSpawner.SpawnIntervalMax = 6f;
 
         var cond = new WaitUntil(() =>
         {
@@ -313,6 +356,14 @@ public class Game : MonoBehaviour
 
         _badBubbleSpawner.SpawnIntervalMin = spawnInterwalMinBeforeBub;
         _badBubbleSpawner.SpawnIntervalMax = spawnInterwalMaxBeforeBub;
+
+        _buffSpawner.SpawnIntervalMin = spawnInterwalMinBeforeBuff;
+        _buffSpawner.SpawnIntervalMax = spawnInterwalMaxBeforeBuff;
+
+        _woodSpawner.MinArrowTime = 1f;
+        _woodSpawner.MaxArrowTime = 1.5f;
+
+        SetAllBufsSameProbability();
 
         yield return new WaitForSeconds(10f);
 

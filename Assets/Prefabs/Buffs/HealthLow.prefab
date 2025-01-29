@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7270190430958430279}
   - component: {fileID: 3674692492867698257}
   m_Layer: 8
-  m_Name: Buff 3
+  m_Name: HealthLow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

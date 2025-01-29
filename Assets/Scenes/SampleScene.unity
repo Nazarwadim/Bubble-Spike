@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 24
-  _speed: 8.5
+  _speed: 7.5
   _endPosition: {x: 0, y: 0}
 --- !u!114 &645576674
 MonoBehaviour:
@@ -1695,12 +1695,22 @@ MonoBehaviour:
     Side: 2
   SpawnIntervalMin: 2
   SpawnIntervalMax: 2
-  buffPrefabs:
-  - {fileID: 4727344505012857363, guid: 5a708660d31193f4b899a493dd1f61ea, type: 3}
-  - {fileID: 4727344505012857363, guid: 60708307c8f6b7b4880eddcc6afb6668, type: 3}
-  - {fileID: 4727344505012857363, guid: f0657432cea57454daa5393eacc84102, type: 3}
-  - {fileID: 4727344505012857363, guid: d8ece73f6626f2a4c909251bc4f9c333, type: 3}
-  - {fileID: 4727344505012857363, guid: 03627131ae9979dfe82c6acaec341ce5, type: 3}
+  Buffs:
+  - BuffName: Speed
+    BuffPrefab: {fileID: 4727344505012857363, guid: f0657432cea57454daa5393eacc84102, type: 3}
+    SpawnProbability: 33
+  - BuffName: SlownessLow
+    BuffPrefab: {fileID: 4727344505012857363, guid: 5a708660d31193f4b899a493dd1f61ea, type: 3}
+    SpawnProbability: 0
+  - BuffName: SlownessHigh
+    BuffPrefab: {fileID: 4727344505012857363, guid: 03627131ae9979dfe82c6acaec341ce5, type: 3}
+    SpawnProbability: 0
+  - BuffName: HealthLow
+    BuffPrefab: {fileID: 4727344505012857363, guid: d8ece73f6626f2a4c909251bc4f9c333, type: 3}
+    SpawnProbability: 33
+  - BuffName: HealthHigh
+    BuffPrefab: {fileID: 4727344505012857363, guid: 60708307c8f6b7b4880eddcc6afb6668, type: 3}
+    SpawnProbability: 33
   minFallSpeed: 1
   maxFallSpeed: 5
 --- !u!1 &1539886057
